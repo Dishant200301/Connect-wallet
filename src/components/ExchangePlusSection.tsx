@@ -1,4 +1,3 @@
-
 // Define the type for a feature item
 interface FeatureItem {
   id: string;
@@ -36,13 +35,14 @@ const ExchangePlusSection: React.FC = () => {
       <div className="container mx-auto px-4">
         {/* Main container for the card and grid */}
         <div className="bg-card-dark-bg rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 shadow-2xl">
-
           {/* Left Gradient Card: "Exchange Plus!" */}
-          <div className="w-full lg:w-1/3 flex flex-col items-center justify-center p-8 sm:p-10 rounded-2xl text-center
+          <div
+            className="w-full lg:w-1/3 flex flex-col items-center justify-center p-8 sm:p-10 rounded-2xl text-center
                           bg-gradient-to-br from-primary-green via-primary-yellow to-primary-cyan text-neutral-900
-                          shadow-lg animate-fade-in-up [animation-delay:0.1s]">
+                          shadow-lg animate-fade-in-up [animation-delay:0.1s]"
+          >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-              Exchange <br className="sm:hidden"/> Plus!
+              Exchange <br className="sm:hidden" /> Plus!
             </h2>
             <p className="text-base sm:text-lg mb-8 max-w-sm">
               Explore stop orders, deep liquidity, and more!
@@ -58,7 +58,7 @@ const ExchangePlusSection: React.FC = () => {
 
           {/* Right Features Grid */}
           <div className="w-full lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 animate-fade-in-up [animation-delay:0.3s]">
-            {featureItems.map((item,) => (
+            {featureItems.map((item) => (
               <div key={item.id} className="flex items-start gap-4 text-left">
                 {/* Circular Number */}
                 <div
@@ -69,7 +69,9 @@ const ExchangePlusSection: React.FC = () => {
                 </div>
                 {/* Content Wrap */}
                 <div className="flex-1">
-                  <h5 className="font-bold text-white text-xl mb-1">{item.title}</h5>
+                  <h5 className="font-bold text-white text-xl mb-1">
+                    {item.title}
+                  </h5>
                   <p className="text-gray-400 text-base">{item.description}</p>
                 </div>
               </div>
