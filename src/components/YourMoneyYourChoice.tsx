@@ -54,7 +54,7 @@ const tabSections = [
 // Reusable component for a list item with a checkmark
 const CheckListItem: React.FC<{ text: string }> = ({ text }) => (
   <li className="flex items-center gap-3">
-    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-check-green flex items-center justify-center">
+    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-check-black flex items-center justify-center">
       <img
         src="https://framerusercontent.com/images/Y9xGdX9mecp48wwvXVkVvoDnrc.svg" // Checkmark icon
         alt="Green checkmark"

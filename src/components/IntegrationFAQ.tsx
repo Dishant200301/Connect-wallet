@@ -165,15 +165,7 @@ const IntegrationFAQ: React.FC = () => {
   return (
     <section className="relative py-16 md:py-24 lg:py-32 px-4 sm:px-8 md:px-12 bg-coiner-super-dark-bg font-sans overflow-hidden">
       {/* Background Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <img
-          decoding="async"
-          loading="lazy"
-          src="https://framerusercontent.com/images/Gx6JdLKf8a9yrAcDz8YIdg6CdkE.png"
-          alt="Abstract geometric background pattern"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      
 
       <div className="relative z-10 container max-w-7xl mx-auto flex flex-col items-center">
         {/* Integrated with most popular cryptocurrencies Section */}

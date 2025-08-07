@@ -26,8 +26,9 @@ const BrandScroller: React.FC = () => {
   const duplicatedLogos = [...brandLogos, ...brandLogos];
 
   return (
-    <section 
-      className="relative w-full py-4 overflow-hidden
+    <div className='pt-[75px] bg-[#0a0a0a]'>
+          <section 
+      className="relative w-full overflow-hidden
                  bg-gradient-to-r from-[#DFFF5B] to-[#00CED1]
                  group"
       // You can control the animation speed here if needed, e.g.:
@@ -45,35 +46,27 @@ const BrandScroller: React.FC = () => {
                    group-hover:animation-pause"
       >
         {duplicatedLogos.map((logo, index) => (
-          // Each logo container.
-          // - `flex-shrink-0`: Prevents logos from shrinking to fit, maintaining their size.
-          // - `mx-8 md:mx-12 lg:mx-16`: Responsive horizontal margin for spacing between logos.
-          // - `flex items-center justify-center`: Centers the image within its container.
-          // - `h-16 sm:h-20 lg:h-24`: Responsive height for the logo images.
           <div
             key={index} // Using index as key is acceptable here since the list is static and for display.
             className="flex-shrink-0 
                        mx-8 md:mx-12 lg:mx-16 
                        flex items-center justify-center 
-                       h-16 sm:h-20 lg:h-24" 
+                       h-16 sm:h-16 lg:h-20" 
           >
             <img
               src={logo.src}
               alt={logo.alt}
-              // Styling for the logo image.
-              // - `h-full object-contain`: Ensures the image scales within its container without cropping.
-              // - `filter grayscale opacity-50`: Makes the logos initially appear faded/desaturated.
-              // - `hover:grayscale-0 hover:opacity-100`: Reverts to full color and opacity on hover.
-              // - `transition-all duration-300`: Smooth transition for the hover effect.
-              className="h-full object-contain 
+              className="object-contain 
                          filter grayscale opacity-50 
                          hover:grayscale-0 hover:opacity-100 
-                         transition-all duration-300"
+                         transition-all duration-300 h-[60px] sm:h-[40px]"
             />
           </div>
         ))}
       </div>
     </section>
+
+    </div>
   );
 };
 

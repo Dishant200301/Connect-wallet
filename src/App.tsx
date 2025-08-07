@@ -8,16 +8,18 @@ import HowItWorks from './components/HowItWorks';
 import PopularCryptocurrencies from './components/PopularCryptocurrencies';
 import PortfolioSection from './components/PortfolioSection';
 import YourMoneyYourChoice from './components/YourMoneyYourChoice';
-import IntegrationFAQ from './components/IntegrationFAQ';
+// import IntegrationFAQ from './components/IntegrationFAQ';
 import DownloadSection from './components/DownloadSection';
 import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
       <HeroSection />
+      <div className="bg-gray-900">
       <BrandScroller />
+      </div>
       <ExchangePlusSection />
       <FeaturesSection /> {/* Add the FeaturesSection component here */}
         <StatisticsSection/>
@@ -25,10 +27,10 @@ function App() {
         <PopularCryptocurrencies/>
         <PortfolioSection/>
         <YourMoneyYourChoice/>
-        <IntegrationFAQ/>
+        {/* <IntegrationFAQ/> */}
         <DownloadSection/>
         <Footer/>
-    </div>
+    </>
   );
 }
 
