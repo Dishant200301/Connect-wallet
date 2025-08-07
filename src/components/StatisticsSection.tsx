@@ -1,64 +1,27 @@
-import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-// Inline SVG components for cryptocurrency icons and graphs
-const BitcoinIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#F7931A"/>
-    <path d="M22.5 14.25c.25-1.75-1-2.75-3-3.25l.625-2.5-1.5-.375-.625 2.375c-.375-.125-.75-.25-1.125-.375l.625-2.375-1.5-.375-.625 2.5c-.375-.125-.625-.25-1-.375v-.125l-2.125-.5-.375 1.5s1 .25 1 .25c.5.125.625.5.625.75l-.625 2.5c0 0 .125 0 .125 0-.125 0-.125 0-.125 0l-.875 3.5c-.125.25-.375.5-.75.375 0 0-1-.25-1-.25L10 20l2 .5c.375.125.75.125 1.125.25L12.5 23.25l1.5.375.625-2.5c.375.125.75.25 1.125.25l-.625 2.5 1.5.375.625-2.5c2.375.5 4.125.25 4.875-1.875.625-1.75 0-2.75-1.25-3.375.875-.25 1.5-.875 1.625-2.25zM19 19.125c-.5 1.75-3.25.875-4.125.625l.75-3c.875.25 3.875.75 3.375 2.375zm.375-4.5c-.375 1.625-2.75.875-3.5.625l.625-2.75c.75.25 3.25.625 2.875 2.125z" fill="white"/>
-  </svg>
-);
+// =======================================================================
+// IMPORTANT: REPLACE THESE PLACEHOLDER CDN URLs WITH YOUR ACTUAL IMAGE URLs
+// You will need to create/upload these specific images to your CDN.
+// - Crypto Icons (SVG or PNG)
+// - Graph Images (PNG)
+// =======================================================================
+const BITCOIN_ICON_CDN_URL =
+  "https://your-cdn-domain.com/images/bitcoin-icon.png";
+const ETHEREUM_ICON_CDN_URL =
+  "https://your-cdn-domain.com/images/ethereum-icon.png";
+const LITECOIN_ICON_CDN_URL =
+  "https://your-cdn-domain.com/images/litecoin-icon.png";
+const BINANCE_ICON_CDN_URL =
+  "https://your-cdn-domain.com/images/binance-icon.png";
 
-const EthereumIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#627EEA"/>
-    <path d="M16 4v8.87l7.5 3.35L16 4z" fill="white" fillOpacity="0.6"/>
-    <path d="M16 4L8.5 16.22l7.5-3.35V4z" fill="white"/>
-    <path d="M16 21.97v6.03l7.5-10.38L16 21.97z" fill="white" fillOpacity="0.6"/>
-    <path d="M16 28v-6.03l-7.5-4.35L16 28z" fill="white"/>
-    <path d="M16 20.62l7.5-4.4-7.5-3.35v7.75z" fill="white" fillOpacity="0.2"/>
-    <path d="M8.5 16.22l7.5 4.4v-7.75l-7.5 3.35z" fill="white" fillOpacity="0.6"/>
-  </svg>
-);
-
-const LitecoinIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#BFBBBB"/>
-    <path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4zm.5 17.5h-7l1.5-5 1.25-4.25 1.5-5h4l-2.75 9.5h5l-1 3.5-3 1.25z" fill="white"/>
-  </svg>
-);
-
-const BinanceIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="16" r="16" fill="#F3BA2F"/>
-    <path d="M16 7l3 3-6 6-3-3 6-6zM10 13l3 3-3 3-3-3 3-3zM22 13l3 3-3 3-3-3 3-3zM16 19l3 3-3 3-3-3 3-3z" fill="white"/>
-    <path d="M19 16l-3-3-3 3 3 3 3-3z" fill="white"/>
-  </svg>
-);
-
-// Growth graph SVG component
-const GrowthGraphUp = () => (
-  <svg width="96" height="40" viewBox="0 0 96 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1 30L12 25L24 28L36 15L48 20L60 10L72 5L84 8L95 1" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M1 39H95" stroke="#E5E7EB" strokeWidth="1" strokeLinecap="round" strokeDasharray="2 2"/>
-  </svg>
-);
-
-// Balance graph SVG component
-const BalanceGraph = () => (
-  <svg width="100%" height="80" viewBox="0 0 280 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1 60L20 55L40 58L60 40L80 45L100 30L120 25L140 35L160 20L180 25L200 15L220 20L240 10L260 15L279 5" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M1 79H279" stroke="#E5E7EB" strokeWidth="1" strokeLinecap="round" strokeDasharray="2 2"/>
-    <path d="M1 60L20 55L40 58L60 40L80 45L100 30L120 25L140 35L160 20L180 25L200 15L220 20L240 10L260 15L279 5" fill="url(#paint0_linear)" fillOpacity="0.1"/>
-    <defs>
-      <linearGradient id="paint0_linear" x1="140" y1="5" x2="140" y2="79" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#10B981"/>
-        <stop offset="1" stopColor="#10B981" stopOpacity="0"/>
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
+const GRAPH_GROWTH_UP_CDN_URL =
+  "https://your-cdn-domain.com/images/growth-graph-up.png"; // Example for up-trend graph
+const GRAPH_GROWTH_DOWN_CDN_URL =
+  "https://your-cdn-domain.com/images/growth-graph-down.png"; // Example for down-trend graph
+const GRAPH_BALANCE_CDN_URL =
+  "https://your-cdn-domain.com/images/balance-graph.png"; // Graph for 'Your Balance' card
+// =======================================================================
 
 // Framer Motion Variants for animations
 const sectionVariants: Variants = {
@@ -174,7 +137,11 @@ const StatisticsSection: React.FC = () => {
             {/* Bitcoin Row */}
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-200">
               <div className="flex items-center">
-                <BitcoinIcon />
+                <img
+                  src={BITCOIN_ICON_CDN_URL}
+                  alt="Bitcoin"
+                  className="w-8 h-8 mr-3 rounded-full"
+                />
                 <span className="font-semibold text-dark-text text-lg">
                   Bitcoin <span className="text-gray-500 text-sm">BTC</span>
                 </span>
@@ -202,7 +169,11 @@ const StatisticsSection: React.FC = () => {
             <div className="pb-4 mb-4 border-b border-gray-200">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center">
-                  <EthereumIcon />
+                  <img
+                    src={ETHEREUM_ICON_CDN_URL}
+                    alt="Ethereum"
+                    className="w-8 h-8 mr-3 rounded-full"
+                  />
                   <span className="font-semibold text-dark-text text-lg">
                     Ethereum <span className="text-gray-500 text-sm">ETH</span>
                   </span>
@@ -230,14 +201,22 @@ const StatisticsSection: React.FC = () => {
                 <p className="text-dark-text text-2xl font-bold">
                   $ 170,892.90
                 </p>
-                <GrowthGraphUp />
+                <img
+                  src={GRAPH_GROWTH_UP_CDN_URL}
+                  alt="Growth Graph"
+                  className="h-10 w-24"
+                />
               </div>
             </div>
 
             {/* Litecoin Row */}
             <div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-200">
               <div className="flex items-center">
-                <LitecoinIcon />
+                <img
+                  src={LITECOIN_ICON_CDN_URL}
+                  alt="Litecoin"
+                  className="w-8 h-8 mr-3 rounded-full"
+                />
                 <span className="font-semibold text-dark-text text-lg">
                   Litecoin <span className="text-gray-500 text-sm">LTC</span>
                 </span>
@@ -264,7 +243,11 @@ const StatisticsSection: React.FC = () => {
             {/* Binance Row */}
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <BinanceIcon />
+                <img
+                  src={BINANCE_ICON_CDN_URL}
+                  alt="Binance"
+                  className="w-8 h-8 mr-3 rounded-full"
+                />
                 <span className="font-semibold text-dark-text text-lg">
                   Binance <span className="text-gray-500 text-sm">BNB</span>
                 </span>
@@ -299,11 +282,17 @@ const StatisticsSection: React.FC = () => {
             <p className="text-gray-500 text-sm mb-2">Your Balance</p>
             <p className="text-dark-text text-3xl font-bold mb-4">3545.23</p>
             <div className="relative">
-              <BalanceGraph />
+              <img
+                src={GRAPH_BALANCE_CDN_URL}
+                alt="Balance Graph"
+                className="w-full h-auto"
+              />
               <div className="absolute bottom-0 left-0 flex items-center bg-white rounded-full p-2 pr-3 shadow-md -mb-3">
-                <div className="w-5 h-5 mr-1">
-                  <EthereumIcon />
-                </div>
+                <img
+                  src={ETHEREUM_ICON_CDN_URL}
+                  alt="Ethereum Small"
+                  className="w-5 h-5 mr-1"
+                />
                 <span className="text-coiner-green text-xs font-semibold">
                   +6.58%
                 </span>
