@@ -104,6 +104,7 @@ module.exports = {
         "float-reverse": "floatReverse 5s ease-in-out infinite",
         "infinite-scroll": "scroll 40s linear infinite",
         "marquee-rtl": "marquee-rtl var(--marquee-duration) linear infinite",
+        
       },
     },
   },
