@@ -1,213 +1,183 @@
-
-// No local image imports needed when using CDN URLs
 import React from 'react';
 
-const HeroSection: React.FC = () => {
+const HeroHeader: React.FC = () => {
   return (
-    <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden min-h-screen flex items-center justify-center font-poppins">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
+    <section className="relative overflow-hidden
+                        py-16 md:py-24 xl:pb-[100px] /* Responsive vertical padding */
+                        min-h-screen flex items-center justify-center /* Center content vertically if space allows */
+                        bg-[#101418] text-white">
+
+      {/* Background Pattern - Uses CDN image */}
+      {/* Original HTML had multiple hidden variants for bg pattern for different screen sizes.
+          For Tailwind, we can use one image and let CSS handle scaling, or define responsive visibility/sizing.
+          Using a single image with object-cover and opacity for a subtle background. */}
+      <div className="absolute inset-0 -z-10 opacity-30">
         <img
+          decoding="async"
           src="https://framerusercontent.com/images/ZoO46Q0SHYWPmETAlOKdYbmEktE.png"
           alt="bg pattern"
-          className="w-full h-full object-cover object-center"
+          // object-cover ensures it covers the area, w-full h-full makes it fill its parent.
+          className="w-full h-full object-cover"
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center justify-between text-center lg:text-left">
-        {/* Content Section */}
-        <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-fade-in-up [animation-delay:0.1s]">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
-            Trusted Secure <span className="text-primary-green">Web3</span> Crypto Exchange
-          </h1>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-            Experience peace of mind with our trusted and secure Web3 crypto exchange. Safeguard your assets and embrace seamless transactions in the decentralized world. Join us for a worry-free trading.
-          </p>
+      {/* Main Container - max-width and horizontal padding */}
+      {/* This div acts as the main content wrapper, centering everything horizontally */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Content full wrap - flex column, items centered for all screens */}
+        <div className="flex flex-col items-center text-center">
+          {/* Content block for text */}
+          <div className="max-w-4xl px-4"> {/* max-w limits width, px-4 provides internal padding */}
+            {/* Display Text */}
+            <div className="mb-4"> {/* Responsive bottom margin for heading */}
+             <h1
+  className="text-4xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-7xl 
+             font-bold  leading-tight tracking-tight text-center text-white "
+>
+  Trusted Secure <span className="text-[rgb(90,223,137)]">Web3</span> Crypto Exchange
+</h1>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-            {/* Get Started Button */}
+            </div>
+            {/* Context paragraph */}
+            <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-20"> {/* Responsive bottom margin for paragraph */}
+              <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto">
+                Experience peace of mind with our trusted and secure Web3 crypto exchange. Safeguard your assets
+                and embrace seamless transactions in the decentralized world. Join us for a worry-free trading
+              </p>
+            </div>
+          </div>
+
+          {/* Button Wrap - Stack on mobile, row on small screens and up, with responsive gap */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8
+                          mb-16 "> {/* Responsive bottom margin for button group */}
+            {/* Primary Gradient Button */}
             <a
-              href="#"
-              className="inline-block px-8 py-4 rounded-full font-semibold text-neutral-900
-                         bg-gradient-to-r from-primary-yellow via-primary-green to-primary-cyan
-                         hover:scale-105 transition-transform duration-300 ease-in-out shadow-lg transform"
+              // Corrected href from original Framer site to relative path
+              href="./contact"
+              className="px-8 py-3 rounded-full text-[rgb(20,20,20)] font-semibold text-lg
+                bg-[linear-gradient(99deg,rgb(222,248,76)_0%,rgb(90,223,137)_49.5495%,#36DAE5_100%)] /* Direct gradient */
+                hover:scale-105 transition-transform duration-300 inline-flex items-center justify-center whitespace-nowrap
+                w-full sm:w-auto" // Full width on mobile, auto on small screens
+              tabIndex={0}
             >
               Get Started
             </a>
 
-            {/* Explore Button */}
+            {/* Primary-Arrow1 Button */}
             <a
-              href="#"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white
-                         border-2 border-primary-yellow/60 group relative overflow-hidden transform
-                         hover:scale-105 transition-transform duration-300 ease-in-out"
+              // Corrected href from original Framer site to relative path
+              href="./about"
+              className="px-8 py-3 rounded-full text-white font-semibold text-lg
+                relative group inline-flex items-center justify-center gap-2 /* group for hover, gap for text & icon */
+                border-[1.5px] border-solid border-[rgba(222,247,77,0.6)] /* Custom  */
+                bg-transparent hover:bg-gray-800 transition-colors duration-300 whitespace-nowrap
+                w-full sm:w-auto" // Full width on mobile, auto on small screens
+              tabIndex={0}
             >
-              <span className="relative z-10">Explore</span>
-              {/* Arrow Icon container with gradient */}
-              <div className="ml-3 w-8 h-8 rounded-full flex items-center justify-center
-                              bg-gradient-to-br from-primary-yellow to-primary-blue
-                              relative z-10">
+              Explore
+              {/* Arrow icon and its background */}
+              <div className="relative w-8 h-8 rounded-full flex items-center justify-center overflow-hidden
+                bg-[linear-gradient(128deg,rgb(222,248,76)_0%,rgb(33,212,225)_100%)]">
+                {/* Explore button arrow - Uses CDN image */}
                 <img
+                  decoding="async"
                   src="https://framerusercontent.com/images/ngy1IpEcsZnZ2Mo0jrOre8Wk8.svg"
-                  alt="Arrow"
-                  className="w-4 h-4"
+                  alt="arrow icon"
+                  className="w-4 h-4 object-contain z-10"
                 />
+                {/* Arrow back (hover effect) */}
+                {/* This element expands on hover to create the "arrow back" effect */}
+                <div className="absolute inset-0 rounded-full bg-[rgba(222,248,76,0.44)] scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></div>
               </div>
-              {/* Subtle inner glow/pulse effect on hover */}
-              <div className="absolute inset-0 rounded-full bg-primary-yellow/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
             </a>
           </div>
         </div>
 
-        {/* Dashboard UI Section */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center relative md:block animate-fade-in-up [animation-delay:0.3s]">
-          <div className="w-full max-w-xl lg:max-w-none h-auto relative bg-card-dark-bg rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-500 ease-in-out">
-            {/* Dashboard Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-700">
-              <div className="flex items-center space-x-3">
-                <div className="text-xl font-bold text-white">Coiner</div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 rounded-full bg-primary-blue/20 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-primary-blue" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-                  </svg>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-white text-sm">David Metcalfe</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-            
-            {/* Dashboard Content */}
-            <div className="p-6">
-              {/* Balance Section */}
-              <div className="mb-8">
-                <div className="text-gray-400 text-sm mb-1">Total Balance</div>
-                <div className="text-3xl font-bold text-white">$338,086.20</div>
-              </div>
-              
-              {/* Asset Cards */}
-              <div className="grid grid-cols-4 gap-4 mb-8">
-                {[
-                  { symbol: "BTC", balance: "$632.000", change: "-0.28%", color: "#F7931A" },
-                  { symbol: "ETH", balance: "$592.000", change: "+1.20%", color: "#627EEA" },
-                  { symbol: "LTC", balance: "$354.000", change: "+0.35%", color: "#345D9D" },
-                  { symbol: "USDT", balance: "$238.000", change: "-0.15%", color: "#26A17B" }
-                ].map((coin, index) => (
-                  <div key={index} className="bg-coiner-card-bg-primary p-3 rounded-lg">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style={{ backgroundColor: coin.color }}>
-                        {coin.symbol[0]}
-                      </div>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                      </svg>
-                    </div>
-                    <div className="text-sm font-bold text-white mb-1">{coin.balance}</div>
-                    <div className={`text-xs ${coin.change.startsWith('-') ? 'text-red-500' : 'text-green-500'}`}>
-                      {coin.change}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Analytics Chart */}
-              <div className="bg-coiner-card-bg p-4 rounded-lg mb-6">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="text-lg font-bold text-white">Analytics</div>
-                  <div className="flex space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <div className="w-3 h-3 rounded-full bg-primary-cyan"></div>
-                      <span className="text-xs text-gray-400">Income</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <div className="w-3 h-3 rounded-full bg-gray-500"></div>
-                      <span className="text-xs text-gray-400">Outcome</span>
-                    </div>
-                    <div className="px-2 py-1 bg-gray-800 rounded text-xs text-white">2024</div>
-                  </div>
-                </div>
-                
-                {/* Chart Bars */}
-                <div className="flex items-end justify-between h-32 mb-2">
-                  {[35, 28, 32, 30, 40, 28, 45, 30].map((height, index) => (
-                    <div key={index} className="w-8 bg-gradient-to-t from-primary-green to-primary-cyan rounded-md" style={{ height: `${height}%` }}></div>
-                  ))}
-                </div>
-                
-                {/* Chart Labels */}
-                <div className="flex justify-between text-xs text-gray-400">
-                  <div>Jan</div>
-                  <div>Feb</div>
-                  <div>Mar</div>
-                  <div>Apr</div>
-                  <div>May</div>
-                  <div>Jun</div>
-                  <div>Jul</div>
-                  <div>Aug</div>
-                </div>
-              </div>
-              
-              {/* Exchange Section */}
-              <div className="bg-coiner-card-bg p-4 rounded-lg">
-                <div className="text-lg font-bold text-white mb-4">Exchange</div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="text-sm font-medium text-white">1</div>
-                    <div className="text-sm font-medium text-white">BTC</div>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div className="text-sm font-medium text-white">$102.89 USD</div>
-                </div>
-                <div className="flex justify-between mb-4">
-                  <div className="w-20 h-8 bg-gray-800 rounded flex items-center justify-center text-white">10</div>
-                  <div className="w-20 h-8 bg-gray-800 rounded flex items-center justify-center text-green-500">$</div>
-                </div>
-                <div className="flex justify-between mb-4">
-                  <div className="text-sm text-white">1028.9</div>
-                  <div className="text-xs text-gray-400">1 ETH = 2500 USD</div>
-                </div>
-                <button className="w-full py-2 rounded-lg bg-gradient-to-r from-primary-green to-primary-cyan text-neutral-900 font-semibold hover:opacity-90 transition-opacity">
-                  Exchange
-                </button>
-              </div>
-            </div>
-          </div>
+        {/* Image wrap (Main Dashboard Image) - Uses CDN image */}
+        {/* The original HTML had multiple SSR variants for this image; a single responsive img tag is usually sufficient with modern img attributes */}
+        <div className="relative w-full max-w-6xl mx-auto z-0 mt-8 md:mt-0"> {/* Relative for potential internal absolute positioning, max-w to control size, mx-auto to center, z-0 to stack correctly */}
+          <img
+            decoding="async"
+            src="https://framerusercontent.com/images/DbY7cvm12ymahzXVmnWsT0C1yA.webp"
+            alt="statistics dashboard"
+            className="w-full h-auto object-contain"
+            // Retaining original srcset and sizes for proper responsive image loading
+            sizes="(min-width: 1440px) 1205px, (min-width: 810px) and (max-width: 1199px) calc((100vw - 60px) * 1.004), (min-width: 1200px) and (max-width: 1439px) calc(min(100vw - 80px, 1200px) * 1.0045), (max-width: 809px) calc(100vw - 40px)"
+            srcSet="https://framerusercontent.com/images/DbY7cvm12ymahzXVmnWsT0C1yA.webp?scale-down-to=512 512w,
+                    https://framerusercontent.com/images/DbY7cvm12ymahzXVmnWsT0C1yA.webp?scale-down-to=1024 1024w,
+                    https://framerusercontent.com/images/DbY7cvm12ymahzXVmnWsT0C1yA.webp?scale-down-to=2048 2048w,
+                    https://framerusercontent.com/images/DbY7cvm12ymahzXVmnWsT0C1yA.webp 2403w"
+          />
+        </div>
+
+        {/* Floating Crypto Icons - Positioned absolutely relative to the main container (div.container).
+            Visibility controlled by breakpoints to avoid clutter on small screens.
+            Sizes scale with breakpoints. Exact percentages might need fine-tuning
+            based on your specific design goals and screen sizes.
+            Animation classes added for visual flair. */}
+
+        {/* Bitcoin (top-left) */}
+        <div className="absolute top-[20%] left-[5%]
+                        w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24
+                        animate-pulse hidden md:block"> {/* Hide on extra small screens */}
+          <img
+            decoding="async"
+            src="https://framerusercontent.com/images/3ZdkAjBRU7fZ49d9ktystzLkU.svg"
+            alt="bitcoin icon"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        {/* Bitcoin Diamond 1 (top-right) */}
+        <div className="absolute top-[10%] right-[10%]
+                        w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20
+                        animate-bounce hidden md:block" style={{ animationDuration: '3s' }}>
+          <img
+            decoding="async"
+            src="https://framerusercontent.com/images/g7SkHIIZZrXE1QZOOweIJSPsVeU.svg"
+            alt="bitcoin diamond icon"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        {/* Bitcoin Diamond 2 (bottom-left) */}
+        <div className="absolute bottom-[20%] left-[15%]
+                        w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18
+                        animate-pulse hidden lg:block" style={{ animationDelay: '0.5s' }}> {/* Hide on md screens and below */}
+          <img
+            decoding="async"
+            src="https://framerusercontent.com/images/wDarZl4QiJ3qIRKVkEVluE0yE.svg"
+            alt="bitcoin diamond icon"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        {/* Bitcoin T (large, top-right of image) */}
+        <div className="absolute top-1/4 right-[5%]
+                        w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40
+                        animate-spin-slow hidden md:block"> {/* Hide on extra small screens */}
+          <img
+            decoding="async"
+            src="https://framerusercontent.com/images/ESqyW6qXru2MvWsGvcdZsAVvko.svg"
+            alt="bitcoin T icon"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        {/* Bitcoin T (small, bottom-right) */}
+        <div className="absolute bottom-[5%] right-[5%] /* Adjusted from original bottom-left for layout variety */
+                        w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24
+                        animate-spin-slow hidden md:block" style={{ animationDelay: '0.2s' }}> {/* Hide on extra small screens */}
+          <img
+            decoding="async"
+            src="https://framerusercontent.com/images/iHBZcuRgwXgQXxCSDG0ZHSsf27Q.svg"
+            alt="bitcoin t icon"
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
-
-      {/* Floating Decorative SVGs (positioning will require fine-tuning based on screen size) */}
-      {/* These are absolutely positioned and will float */}
-
-      {/* Bitcoin */}
-      <img src="https://framerusercontent.com/images/3ZdkAjBRU7fZ49d9ktystzLkU.svg" alt="bitcoin" className="absolute top-[10%] left-[5%] w-16 md:w-24 z-20 animate-float hidden sm:block" />
-
-      {/* Litecoin */}
-      <img src="https://framerusercontent.com/images/g7SkHIIZZrXE1QZOOweIJSPsVeU.svg" alt="litecoin" className="absolute top-[30%] right-[5%] w-12 md:w-20 z-20 animate-float-slow hidden sm:block" />
-
-      {/* Binance Coin */}
-      <img src="https://framerusercontent.com/images/wDarZl4QiJ3qIRKVkEVluE0yE.svg" alt="binance coin" className="absolute bottom-[20%] left-[15%] w-12 md:w-20 z-20 animate-float-reverse hidden sm:block" />
-
-      {/* Tether */}
-      <img src="https://framerusercontent.com/images/ESqyW6qXru2MvWsGvcdZsAVvko.svg" alt="tether" className="absolute bottom-[5%] left-[45%] w-16 md:w-28 z-20 hidden md:block animate-float" />
-
-      {/* Ethereum */}
-      <img src="https://framerusercontent.com/images/iHBZcuRgwXgQXxCSDG0ZHSsf27Q.svg" alt="ethereum" className="absolute top-[60%] right-[10%] w-16 md:w-28 z-20 hidden sm:block animate-float-slow" />
-
     </section>
   );
 };
 
-export default HeroSection;
+export default HeroHeader;
