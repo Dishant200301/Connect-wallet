@@ -1,4 +1,4 @@
-// src/components/PopularCryptocurrencies.tsx
+import React from 'react';
 
 // Data for popular cryptocurrencies, mirroring the image content
 const cryptocurrencies = [
@@ -51,18 +51,31 @@ interface CryptoCardProps {
 
 /**
  * Reusable component to render an individual cryptocurrency card.
+ * The entire card is now clickable and redirects to a crypto-specific detail page.
  */
 const CryptoCard: React.FC<CryptoCardProps> = ({ crypto }) => {
+  // Generate a friendly URL slug for redirection
+  // Ensure the slug is URL-safe and consistent for navigation
+  const cryptoSlug = crypto.name.toLowerCase().replace(/\s|\(|\)/g, '').replace(/&/g, 'and');
+
   return (
-    <div className="relative flex flex-col items-center p-8 pt-16 rounded-[40px] bg-coiner-card-bg-primary text-white
-                    w-[320px] h-[450px] overflow-hidden group
-                    transition-transform duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl">
+    // The entire card is now an anchor <a> element, making the whole area clickable.
+    <a
+      href={`/crypto/${cryptoSlug}`} // Dynamic link for redirection
+      className="relative flex flex-col items-center p-8 pt-16 rounded-[40px] bg-coiner-card-bg-primary text-white
+                 w-[320px] h-[450px] overflow-hidden group cursor-pointer
+                 transition-transform duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl"
+      aria-label={`View details for ${crypto.name}`} // Accessibility label for the entire card link
+    >
       
       {/* Blurred background element positioned behind the icon */}
       <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 rounded-full filter blur-[36px] opacity-70 ${crypto.iconBlurBg}`}></div>
 
-      {/* Crypto Icon Container */}
-      <div className="relative z-10 w-[80px] h-[80px] flex items-center justify-center rounded-[30px] shadow-lg mb-6 bg-transparent">
+      {/* Crypto Icon Container - no longer a separate <a>, it's part of the parent card link */}
+      <div
+        className="relative z-10 w-[80px] h-[80px] flex items-center justify-center rounded-[30px] shadow-lg mb-6 bg-transparent
+                   transform transition-transform duration-200 ease-in-out group-hover:scale-105" // Use group-hover for hover effect
+      >
         <img
           decoding="async"
           loading="lazy"
@@ -84,20 +97,20 @@ const CryptoCard: React.FC<CryptoCardProps> = ({ crypto }) => {
           {crypto.description}
         </p>
 
-        {/* Buy Now Button */}
+        {/* Buy Now "Button" - now a span for styling, not a separate interactive element (<a> or <button>) */}
+        {/* It acts as a visual cue but is part of the parent card's clickable area, adhering to HTML validity. */}
         <div className="mt-8 w-full">
-          <a
-            href="#" // Placeholder link, replace with actual navigation path
+          <span
             className="inline-flex items-center justify-center px-8 py-3 rounded-full text-white text-base font-medium
-                       border-[1.5px] border-coiner-yellow-green/60 hover:bg-coiner-yellow-green/10
+                       border-[1.5px] border-coiner-yellow-green/60 group-hover:bg-coiner-yellow-green/10
                        transition-colors duration-300 ease-in-out w-full"
-            aria-label={`Buy ${crypto.name}`}
+            // No href attribute here as the entire parent <a> tag handles the navigation
           >
             Buy Now
-          </a>
+          </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
