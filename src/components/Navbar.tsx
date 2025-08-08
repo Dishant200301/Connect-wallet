@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import logoImage from "../assets/Group 220.png";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,7 +63,7 @@ const Navbar: React.FC = () => {
     <nav className="relative bg-[#101418] py-4 font-sans z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo Section */}
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src={logoImage}
             alt="BACKEDBY Quantum Logo"
@@ -76,20 +77,19 @@ const Navbar: React.FC = () => {
               Quantum
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links - Hidden on smaller screens */}
         <div className="hidden lg:flex items-center space-x-8 xl:space-x-8">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item}
-              href={`${item.toLowerCase()}`}
+              to={`/${item.toLowerCase()}`} // Add leading slash so it's absolute
               className="text-white/80 hover:text-sky-400 transition-colors duration-300 uppercase text-sm"
             >
               {item}
-            </a>
+            </Link>
           ))}
-
           {/* Connect Wallet Button */}
           <button className="bg-blue-700 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-800 transition-colors duration-300 border-2 border-sky-400">
             Connect Wallet
@@ -137,15 +137,16 @@ const Navbar: React.FC = () => {
         <ul className="flex flex-col items-center space-y-4">
           {navItems.map((item) => (
             <li key={`mobile-${item}`}>
-              <a
-                href="#"
+              <Link
+                to={`/${item.toLowerCase()}`}
                 className="block text-white text-lg py-2 hover:text-sky-400 uppercase"
                 onClick={handleNavLinkClick}
               >
                 {item}
-              </a>
+              </Link>
             </li>
           ))}
+
           <li>
             <button className="bg-blue-700 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-800 transition-colors duration-300 w-full mt-4 border-2 border-sky-400">
               Connect Wallet
