@@ -15,7 +15,6 @@ import Footer from '../components/Footer';
 function HomePage() {
   return (
     <>
-      <Navbar />
       <HeroSection />
       <div className="bg-gray-900">
       <BrandScroller />

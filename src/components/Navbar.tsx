@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={`${item.toLowerCase()}`}
               className="text-white/80 hover:text-sky-400 transition-colors duration-300 uppercase text-sm"
             >
               {item}
