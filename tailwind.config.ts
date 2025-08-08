@@ -9,8 +9,10 @@ module.exports = {
           "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI",
           "Roboto", "Helvetica Neue", "Arial", "Noto Sans",
           "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji",
+          "Alexandria", 'sans-serif',
         ],
       },
+      
       colors: {
         white: "hsl(0, 0%, 100%)",
         "primary-yellow": "rgb(222, 248, 76)",
@@ -57,11 +59,11 @@ module.exports = {
         "blur-tether-green": "rgb(38, 161, 123)",
         "blur-binance-orange": "rgb(243, 186, 47)",
 
-        'coiner-green': '#5adf89', // The vibrant green for text/accents
-        'dark-background': '#1a1a1a', // Main background black
         'card-bg': '#f9fafb', // Light background for the cards
         'light-text': '#a0a0a0', // Lighter gray text
         'dark-text': '#272727'
+
+
       },
       keyframes: {
         fadeInUp: {
@@ -104,6 +106,12 @@ module.exports = {
         "float-reverse": "floatReverse 5s ease-in-out infinite",
         "infinite-scroll": "scroll 40s linear infinite",
         "marquee-rtl": "marquee-rtl var(--marquee-duration) linear infinite",
+
+        'slide-in-right': 'slideInRight 0.5s ease-out forwards', // Not used for card row animation
+        // New animation utility for the infinite scroll
+        'infinite-scroll-rtl': 'scroll-rtl 60s linear infinite',
+        scroll: 'scroll 20s linear infinite',
+
         
       },
     },
